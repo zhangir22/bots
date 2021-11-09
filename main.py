@@ -1,6 +1,6 @@
 import COVID19Py
 import telebot
-from telebot import types
+
 bot = telebot.TeleBot('2113113800:AAGRXLHCNcSwR_pHwU9k3jkGzORPmJ154TA')
 
 covid = COVID19Py.COVID19()
@@ -9,11 +9,7 @@ latest = covid.getLatest()
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=2)
-    world = types.ReplyKeyboardMarkup("Во всем мире")
-    russia = types.ReplyKeyboardMarkup("Россия")
-    ukraine =  types.ReplyKeyboardMarkup("Украина")
-    markup.add(russia,ukraine)
+ 
     send_mess = f"<b>Привет {message.from_user.first_name}!</b>\nВведите страну"
 
     bot.send_message(message.chat.id, send_mess, parse_mode='html',reply_markup=markup)
